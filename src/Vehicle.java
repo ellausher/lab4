@@ -17,6 +17,8 @@ public abstract class Vehicle implements src.Movable {
     private double y;
     private int direction;
     private boolean started;
+    private boolean isLoaded;
+
 
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName) {
         this.nrDoors = nrDoors;
@@ -27,6 +29,7 @@ public abstract class Vehicle implements src.Movable {
         this.y = 0;
         this.direction = 0; // 0 = norr, 1= öst, 2=syd, 3=väst
         this.started =false;
+        this.isLoaded = false;
         stopEngine();
     }
 

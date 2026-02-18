@@ -24,8 +24,8 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Vehicle> vehicles = new ArrayList<>();
-    Workshop<Volvo240> volvoWorkshop = new Workshop<Volvo240>(10);
+    private final ArrayList<Vehicle> vehicles = new ArrayList<>();
+    private final Workshop<Volvo240> volvoWorkshop = new Workshop<Volvo240>(10);
     //methods:
 
     public static void main(String[] args) {
@@ -35,6 +35,8 @@ public class CarController {
         cc.vehicles.add(new Volvo240(Color.BLACK));
         cc.vehicles.add(new Saab95(Color.BLACK));
         cc.vehicles.add(new Scania(Color.BLACK));
+        cc.volvoWorkshop.setX(0);
+        cc.volvoWorkshop.setY(300);
         int i=0;
         for (Vehicle vehicle : cc.vehicles) {
             vehicle.setX(300);
