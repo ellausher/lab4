@@ -53,9 +53,10 @@ public abstract class Vehicle implements src.Movable {
     }
 
     public void startEngine(){
-
-        currentSpeed = 0.1;
-        this.started = true;
+        if (!this.isLoaded) {
+            currentSpeed = 0.1;
+            this.started = true;
+        }
     }
 
     public void stopEngine(){
@@ -64,7 +65,12 @@ public abstract class Vehicle implements src.Movable {
         this.started = false;
     }
 
-
+    protected void loaded(){
+        this.isLoaded = true;
+    }
+    protected void unload(){
+        this.isLoaded = false;
+    }
     protected abstract double speedFactor();
 
     private void incrementSpeed(double amount){

@@ -12,12 +12,12 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    // To keep track of a single car's position
-    Point volvoPoint = new Point();
+    private final Map<String, BufferedImage> images = new HashMap<>();
+    private final Map<String, Point> points = new HashMap<>();
 
     BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
+    Point volvoWorkshopPoint = new Point(0,300);
+
 
     // TODO: Make this general for all cars
     void moveit(Vehicle vehicle, int x, int y){
@@ -39,9 +39,9 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            points.put("Volvo240", new Point(300, 0));
-            points.put("Saab95", new Point(300,100));
-            points.put("Scania", new Point(300,200));
+            points.put("Volvo240", new Point(0, 0));
+            points.put("Saab95", new Point(0,100));
+            points.put("Scania", new Point(0,200));
 
             images.put("Saab95",ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
             images.put("Volvo240",ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
@@ -61,7 +61,9 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        for (String vehicle : images.keySet()) {
+            g.drawImage(images.get(vehicle),points.get(vehicle).x, points.get(vehicle).y,null);
+        }
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
     }
 }
