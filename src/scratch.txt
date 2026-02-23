@@ -47,3 +47,20 @@ Detta ökar cohesion och minskar coupling där det blir tydligare ansvarsfördel
 2.  gör så att workshopen kan ta emot vehicles. för att minska beroenden.
 3. CarController ska inte bry sig om vilka specifika bilmodeller den arbetar med Workshop<Vehicle>. Så försvinner Use pilar från CarController till volvo, saab, scania.
 4. Ta bort Vehicle beroende från DrawPanel. Ta bort moveit och inför istället SetPoints som tar emot bildnamnet och points den ska flyttas till. Då beror inte controller eller vehicle på DrawPanel.
+
+
+Lab 4:
+2:
+- I ursprungsversionen är controllern både en controller och en model. Den innehar alla regler för spelet och inputs från viewen. I en förbättrad modell bör den endast ta inputs från viewen, men inte ha reglerna.
+- Nej, våra ändringar förbättrade inte MVC alls, utan vi fokuserade på SOC och Inversion Principle.
+- Det nya diagrammet delar upp ansvaret för reglerna till carmodel, inputs från viewen till carcontroller och själva framen till drawpanel.
+
+3:
+Observer: Mönstret finns oavsiktligen mellan CarView och CarController, eftersom CarView blir ett subjekt där actions sker, och CarController blir en observer som uppdaterar. Vi gjorde detta för att ta bort en cykel och minska coupling (och följa dependency inversion principle), men det blev automatiskt därför och observer pattern.
+Observer pattern borde kunna användas för att få bort vehicle beroendet från carModel. Rent logiskt borde alltså antingen bilden eller själva logiken kunna vara en observer till den ena eller andra, för att ta bort beroendet av att bilden efter varje uppdatering uppdateras till nya logiken.
+
+Factory Method: Vi använder inte för närvarande mönstret. Nu skapar vi alla fordon separat i main vilket inte följer factory method, men kan istället skapa ett factory där alla skapas. Så då kommer istället factoryn anropas när ett nytt objekt skapas, och inte enskilt. Coupling och höga beroenden kommer minskas, och förbättringen kommer att gynna dependency inversion principle.
+
+State: Vi använder det för närvarande inte. Vi hade kunnat använda det för båda metoderna TipAble och HasTurbo, för att ta bort beroendena mellan CarModel till de respektive interfacen.
+
+Composite: Vi använder det för närvarande inte. Vi hade kunnat använda composite för att hantera ett grupp av fordon, istället för varje enskilt (t.ex när vi gasar alla bilar i bilden).

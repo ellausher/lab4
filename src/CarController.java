@@ -74,7 +74,6 @@ public class CarController implements CarOperations {
         }
     }
 
-    // Calls the gas method for each car once
     public void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Vehicle vehicle : vehicles) {
@@ -83,21 +82,15 @@ public class CarController implements CarOperations {
     }
 
     public void startEngine() {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.startEngine();
-        }
+        model.startEngine();
     }
 
     public void stopEngine() {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.stopEngine();
-        }
+        model.stopEngine();
     }
 
     public void brake(int amount) {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.brake((double) amount / 100);
-        }
+        model.brake(amount);
     }
 
     public void turboOn() {
