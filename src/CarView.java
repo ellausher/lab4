@@ -37,6 +37,10 @@ public class CarView extends JFrame implements ViewInterface{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
+    JComboBox<String> vehicleDropdown = new JComboBox<>(new String[]{"Volvo240", "Saab95", "Scania", "Random"});
+    JButton addButton = new JButton("Add car");
+    JButton removeButton = new JButton("Remove car");
+
     // Constructor
     public CarView(String framename, CarOperations controller){
         this.carC = controller;
@@ -83,9 +87,12 @@ public class CarView extends JFrame implements ViewInterface{
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(vehicleDropdown);
+        controlPanel.add(addButton, 3);
+        controlPanel.add(brakeButton, 4);
+        controlPanel.add(turboOffButton, 5);
+        controlPanel.add(lowerBedButton, 6);
+        controlPanel.add(removeButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -158,6 +165,21 @@ public class CarView extends JFrame implements ViewInterface{
             public void actionPerformed(ActionEvent e) {
                 carC.lowerBed(gasAmount);
             }
+        });
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {String selected = (String) vehicleDropdown.getSelectedItem();
+            carC.addVehicle(selected);}
+
+        });
+
+        removeButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    carC.removeVehicle();
+            }
+
         });
 
         // Make the frame pack all it's components by respecting the sizes if possible.

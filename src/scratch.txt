@@ -61,6 +61,6 @@ Observer pattern borde kunna användas för att få bort vehicle beroendet från
 
 Factory Method: Vi använder inte för närvarande mönstret. Nu skapar vi alla fordon separat i main vilket inte följer factory method, men kan istället skapa ett factory där alla skapas. Så då kommer istället factoryn anropas när ett nytt objekt skapas, och inte enskilt. Coupling och höga beroenden kommer minskas, och förbättringen kommer att gynna dependency inversion principle.
 
-State: Vi använder det för närvarande inte. Vi hade kunnat använda det för båda metoderna TipAble och HasTurbo, för att ta bort beroendena mellan CarModel till de respektive interfacen.
+State: Vi använder det för närvarande genom att ha booleans som säger huruvida en bil har turbo eller kan tippas. När true innebär det i princip att statet gäller, och tvärtom inte. Vi har också interfacen Tipable och hasTurbo för att se om bilarna är detta.
 
 Composite: Vi använder det för närvarande inte. Vi hade kunnat använda composite för att hantera ett grupp av fordon, istället för varje enskilt (t.ex när vi gasar alla bilar i bilden).

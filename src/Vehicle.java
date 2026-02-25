@@ -17,6 +17,11 @@ public abstract class Vehicle implements src.Movable {
     private double y;
     private int direction;
     private boolean started;
+
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
     private boolean isLoaded;
 
 

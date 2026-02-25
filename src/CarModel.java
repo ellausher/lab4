@@ -21,6 +21,8 @@ public class CarModel {
 
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
 
+
+
     public Workshop<Volvo240> getVolvoWorkshop() {
         return volvoWorkshop;
     }
